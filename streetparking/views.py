@@ -7,6 +7,8 @@ from .twilio_message import MessageClient
 
 from django.http import HttpResponse
 from django.template import loader
+import random
+from datetime import datetime, timedelta
 
 # def index(request):
 #     user_list = User.objects.order_by('name')
@@ -33,7 +35,11 @@ def detail(request):
 def results(request):
     mc = MessageClient()
     user_list = User.objects.all()
-    context = {'user_list': user_list, 'plate': 'BSE55-79'}
+    plate_list = ["RK-099AN", "RK 340AO", "RK-115AN", "RK-248AH", "RK 346AL", "RK-892AE", "RK 019AF", "M 633BD"
+        ,"RK 576AH", "BB 751BH", "RK-755AJ", "S1 819AK", "2T4 0211", "4BO 4979", "4B3 9376", "BSE55-79"]
+    random_plate = random.choice(plate_list)
+    random_time = datetime.today() - timedelta(hours = random.randint(1,5))
+    context = {'user_list': user_list, 'plate': random_plate, '': random_time}
     body = "this is a twilio message for %s " % context['plate']
     mc.send_message(body, 7327151517)
     return render(request, 'streetparking/results.html', context, "")
