@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from .models import User
+from .twilio_message import MessageClient
 
 from django.http import HttpResponse
 from django.template import loader
@@ -30,7 +31,10 @@ def detail(request):
     # return HttpResponse("details of the user")
 
 def results(request):
+    mc = MessageClient()
     user_list = User.objects.all()
     context = {'user_list': user_list, 'plate': 'BSE55-79'}
+    body = "this is a twilio message for %s " % context['plate']
+    mc.send_message(body, 7327151517)
     return render(request, 'streetparking/results.html', context, "")
     # return HttpResponse("results of the user")
