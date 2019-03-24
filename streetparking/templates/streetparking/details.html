@@ -1,0 +1,13 @@
+<h1>User Details</h1>
+<table>
+{% for user in user_list %}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.streetadress}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.zipcode}}</td>
+    </tr>
+{% endfor %}
+</table>
