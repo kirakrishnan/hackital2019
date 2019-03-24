@@ -1,1 +1,26 @@
 <h1>This is the results page</h1>
+<h1>plate no{{plate}}</h1>
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>address</th>
+        <th>zipcode</th>
+        <th>image_no</th>
+        <th>plate_no</th>
+    </tr>
+{% for user in user_list %}
+        <tr>
+            {% if plate in user.name_plate %}
+            <td>{{user.name}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.city}}</td>
+            <td>{{user.zipcode}}</td>
+            <td>{{user.image_no}}</td>
+            <td>{{user.name_plate}}</td>
+            {% endif %}
+        </tr>
+{% endfor %}
+</table>
