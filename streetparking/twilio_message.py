@@ -37,6 +37,8 @@ class MessageClient(object):
                                            from_=self.twilio_number,
                                            # media_url=['https://demo.twilio.com/owl.png'])
                                            )
+        print("successfully sent the text message")
+
 
 
 mc = MessageClient()
