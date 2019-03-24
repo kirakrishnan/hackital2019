@@ -1,0 +1,5 @@
+snewww-49a9a74268a7.json
+*.pyc
+*~
+db.sqlite3
+.DS_Store
