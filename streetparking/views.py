@@ -39,7 +39,7 @@ def results(request):
         ,"RK 576AH", "BB 751BH", "RK-755AJ", "S1 819AK", "2T4 0211", "4BO 4979", "4B3 9376", "BSE55-79"]
     random_plate = random.choice(plate_list)
     random_time = datetime.today() - timedelta(hours = random.randint(1,5))
-    context = {'user_list': user_list, 'plate': random_plate, '': random_time}
+    context = {'user_list': user_list, 'plate': random_plate, 'time': random_time}
     body = "this is a twilio message for %s " % context['plate']
     mc.send_message(body, 7327151517)
     return render(request, 'streetparking/results.html', context, "")
