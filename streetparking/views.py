@@ -30,4 +30,7 @@ def detail(request):
     # return HttpResponse("details of the user")
 
 def results(request):
-    return HttpResponse("results of the user")
+    user_list = User.objects.all()
+    context = {'user_list': user_list, 'plate': 'BSE55-79'}
+    return render(request, 'streetparking/results.html', context, "")
+    # return HttpResponse("results of the user")
